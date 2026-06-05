@@ -1,0 +1,22 @@
+{
+  "name": "cghub-agent",
+  "version": "0.1.0",
+  "description": "CGHub Agent 火堆：贡献记录 + x402 证明 + MCP 工具 + Cobo Wallet",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --env-file=.env src/index.ts",
+    "mcp": "tsx --env-file=.env src/mcp-server.ts",
+    "api": "tsx --env-file=.env src/http-server.ts"
+  },
+  "dependencies": {
+    "@cobo/agentic-wallet": "^0.1.7",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "ethers": "^6.13.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0"
+  }
+}

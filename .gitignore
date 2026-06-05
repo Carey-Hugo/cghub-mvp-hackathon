@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+lib/**/node_modules/
+
+# Environment / secrets
+.env
+*.env
+.env.*
+!.env.example
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+cache/
+broadcast/
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Foundry dependencies and outputs
+contract/lib/*
+!contract/lib/.gitkeep
+contract/broadcast/
+contract/cache/
+contract/out/
+
+# Reference/build artifacts
+**/artifacts-编译产物/
