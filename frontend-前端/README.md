@@ -4,8 +4,9 @@
 
 - 贡献提交页面
 - 钱包连接（MetaMask / Cobo 预留）
-- Cobo 分账触发逻辑
-- 贡献记录展示与 Dashboard
+- Agent 签名 + CAW executor 上链提交
+- Cobo `claimFor` 代领触发逻辑
+- 贡献记录、链上 Round、分账结果与审计事件 Dashboard
 
 ## 快速启动
 
@@ -25,10 +26,10 @@ npm run dev
 - `components/ContributionForm.tsx`：贡献提交表单
 - `components/DistributionView.tsx`：分账结果展示
 - `hooks/useCoboWallet.ts`：Cobo Wallet 状态和请求封装
-- `lib/cobo-sdk.ts`：Cobo 分账请求入口，当前为占位实现
+- `lib/cobo-sdk.ts`：Cobo 分账请求入口，调用 Agent 后端 `/api/trigger-claim`
 
 ## 后续集成建议
 
-1. 将 `lib/cobo-sdk.ts` 中的 `requestCoboDistribution` 替换为真实 Cobo SDK / 后端接口调用。
-2. 对接合约火堆的 ContributionLedger / Distribution 合约接口。
-3. 增加 `Cobo Agentic Wallet` 专用连接逻辑和 Pact 审批状态显示。
+1. 启动 `agent/` 后端 `npm run api`，确保 `/api/sign-contribution`、`/api/submit-contribution`、`/api/trigger-claim` 可用。
+2. 配置可用的 Sepolia RPC：`NEXT_PUBLIC_RPC_URL`。
+3. 如需更完整的历史审计，调大 `NEXT_PUBLIC_EVENT_LOOKBACK_BLOCKS`。

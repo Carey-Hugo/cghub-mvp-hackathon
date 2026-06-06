@@ -2,9 +2,7 @@ import { useCallback, useState } from "react";
 import { requestCoboDistribution } from "../lib/cobo-sdk";
 
 interface DistributionRequest {
-  contributionId: string;
-  amount: string;
-  note: string;
+  contributor: string;
 }
 
 export function useCoboWallet() {
@@ -18,18 +16,12 @@ export function useCoboWallet() {
 
   const requestDistribution = useCallback(
     async (request: DistributionRequest) => {
-      if (!isCoboReady) {
-        throw new Error("Cobo Wallet 未连接");
-      }
-
       const result = await requestCoboDistribution({
-        contributionId: request.contributionId,
-        amount: request.amount,
-        note: request.note,
+        contributor: request.contributor,
       });
       return result;
     },
-    [isCoboReady]
+    []
   );
 
   return {

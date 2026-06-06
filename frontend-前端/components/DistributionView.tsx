@@ -4,7 +4,7 @@ interface DistributionViewProps {
 
 export function DistributionView({ result }: DistributionViewProps) {
   return (
-    <div className="panel">
+    <div className="distribution-box">
       <div className="panel-header">
         <h2>分账结果</h2>
       </div>

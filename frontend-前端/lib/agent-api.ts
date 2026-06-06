@@ -11,6 +11,19 @@ export interface SubmitContributionResponse {
   txHash: string;
 }
 
+export interface PendingResponse {
+  pending: string;
+  score: string;
+  claimed: string;
+}
+
+export interface TriggerClaimResponse {
+  txId?: string;
+  status?: string;
+  skipped?: boolean;
+  reason?: string;
+}
+
 export interface SignContributionRequest {
   contributor: string;
   score: number;
@@ -48,5 +61,18 @@ export function submitContribution(request: SignedContributionResponse) {
   return requestAgent<SubmitContributionResponse>("/api/submit-contribution", {
     method: "POST",
     body: JSON.stringify(request),
+  });
+}
+
+export function getPending(contributor: string) {
+  return requestAgent<PendingResponse>(
+    `/api/pending?contributor=${encodeURIComponent(contributor)}`
+  );
+}
+
+export function triggerClaim(contributor: string) {
+  return requestAgent<TriggerClaimResponse>("/api/trigger-claim", {
+    method: "POST",
+    body: JSON.stringify({ contributor }),
   });
 }

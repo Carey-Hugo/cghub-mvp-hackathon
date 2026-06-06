@@ -34,6 +34,12 @@ button, input, textarea {
   margin-bottom: 24px;
 }
 
+.header-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
 .eyebrow {
   margin: 0 0 8px;
   color: #9bb2cf;
@@ -117,6 +123,18 @@ button, input, textarea {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
 .wallet-panel {
   display: flex;
   flex-direction: column;
@@ -139,6 +157,33 @@ button, input, textarea {
   border: 1px solid rgba(123, 153, 218, 0.12);
 }
 
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.status-grid div {
+  min-width: 0;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(8, 14, 24, 0.9);
+  border: 1px solid rgba(123, 153, 218, 0.12);
+}
+
+.status-grid span {
+  display: block;
+  margin-bottom: 6px;
+  color: #9aa7c3;
+  font-size: 0.85rem;
+}
+
+.status-grid strong {
+  display: block;
+  overflow-wrap: anywhere;
+  color: #f8fbff;
+}
+
 .contribution-list {
   display: grid;
   gap: 14px;
@@ -151,8 +196,54 @@ button, input, textarea {
   border: 1px solid rgba(80, 110, 180, 0.16);
 }
 
+.distribution-box {
+  min-width: 0;
+}
+
+.activity-list {
+  display: grid;
+  gap: 12px;
+}
+
+.activity-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(8, 16, 32, 0.9);
+  border: 1px solid rgba(80, 110, 180, 0.16);
+}
+
+.activity-row p {
+  margin: 4px 0 0;
+  color: #a5b8d4;
+  overflow-wrap: anywhere;
+}
+
+.activity-row a {
+  color: #8ed0ff;
+  white-space: nowrap;
+}
+
 pre {
   margin: 0;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+@media (max-width: 760px) {
+  .page-header,
+  .header-actions {
+    flex-direction: column;
+  }
+
+  .grid-two,
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    padding: 16px;
+  }
 }

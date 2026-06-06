@@ -4,6 +4,7 @@ interface ContributionFormProps {
   onSubmit: (values: {
     title: string;
     amount: string;
+    score: string;
     description: string;
   }) => Promise<void>;
 }
@@ -11,17 +12,22 @@ interface ContributionFormProps {
 export function ContributionForm({ onSubmit }: ContributionFormProps) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("0.01");
+  const [score, setScore] = useState("50");
   const [description, setDescription] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitting(true);
-    await onSubmit({ title, amount, description });
-    setSubmitting(false);
-    setTitle("");
-    setAmount("0.01");
-    setDescription("");
+    try {
+      await onSubmit({ title, amount, score, description });
+      setTitle("");
+      setAmount("0.01");
+      setScore("50");
+      setDescription("");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -43,6 +49,17 @@ export function ContributionForm({ onSubmit }: ContributionFormProps) {
           type="number"
           step="0.01"
           min="0.001"
+          required
+        />
+      </label>
+      <label>
+        贡献分数
+        <input
+          value={score}
+          onChange={(event) => setScore(event.target.value)}
+          type="number"
+          step="1"
+          min="1"
           required
         />
       </label>
